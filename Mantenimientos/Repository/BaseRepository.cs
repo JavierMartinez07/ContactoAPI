@@ -10,7 +10,7 @@ namespace Mantenimientos.Repository
     {
         private static SqlConnection connection = null;
 
-        public static void OpenConecction() {
+        private static void OpenConecction() {
 
             try
             {
@@ -29,11 +29,11 @@ namespace Mantenimientos.Repository
         
         }
 
-        public static void CloseConecction() { 
+        private static void CloseConecction() { 
             connection.Close();
         }
 
-        public static List<T> Query<T>(string query, object parametros = null)
+        protected static List<T> Query<T>(string query, object parametros = null)
         {
             try
             {
