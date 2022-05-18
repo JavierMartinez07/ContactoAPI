@@ -57,6 +57,24 @@ namespace Mantenimientos.Logic
 
             }
             return response;
+        }        
+        
+        public static ResponseModel<Contacto> VerifyEmailContacto(Contacto model)
+        {
+            var response = new ResponseModel<Contacto>();
+            try
+            {
+                 int cantidad = ContactoRepository.VerifyEmailContacto(model);
+                response.Values.Add(cantidad);
+            }
+            catch (Exception e)
+            {
+                response.OK = false;
+                response.Errors.Add(e.Message);
+                response.Errors.Add(e.StackTrace);
+
+            }
+            return response;
         }
     }
 }

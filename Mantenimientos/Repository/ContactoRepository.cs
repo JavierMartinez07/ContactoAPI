@@ -52,6 +52,21 @@ namespace Mantenimientos.Repository
             }
         }
 
+       public static int VerifyEmailContacto(Contacto model)
+        {
+            try
+            {
+                string query = @"select Count(*) from Contacto Where Email = @Email ";
+
+                var result =  Query<int>(query, model);
+                return result[0];
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
 
 
     }

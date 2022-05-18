@@ -24,6 +24,12 @@ namespace ContactoAPI.Controllers
         public ResponseModel<Contacto> InsertContacto(Contacto model)
         {
             return ContactoLogic.InsertContacto(model);
+        }        
+        
+        [HttpPost]
+        public ResponseModel<Contacto> VerifyEmailContacto(Contacto model)
+        {
+            return ContactoLogic.VerifyEmailContacto(model);
         }
     }
 }
