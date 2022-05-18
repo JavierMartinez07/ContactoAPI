@@ -8,18 +8,15 @@ namespace Mantenimientos.Repository
 {
     public class BaseRepository
     {
-        private static SqlConnection connection = null;
 
-        private static void OpenConecction() {
+        private static SqlConnection GetConecction() {
 
             try
             {
-                string connString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=contactosAPI;Integrated Security=True;";
-                using (connection = new SqlConnection(connString))
-                {
-
-                    connection.Open();
-                }
+                string connString = "Data Source=DESKTOP-TIQ4RNN;Initial Catalog=ContactoApi;Integrated Security=True;";
+                var con = new SqlConnection(connString);
+                return con;
+                
             }
             catch (Exception)
             {
@@ -29,17 +26,15 @@ namespace Mantenimientos.Repository
         
         }
 
-        private static void CloseConecction() { 
-            connection.Close();
-        }
 
         protected static List<T> Query<T>(string query, object parametros = null)
         {
             try
             {
-                OpenConecction();
-                var result = connection.Query<T>(query, parametros).AsList<T>();
-                CloseConecction();
+                var con = GetConecction();
+                con.Open();
+                var result = con.Query<T>(query, parametros).AsList<T>();
+                con.Close();
                 return result;
             }
             catch (Exception)

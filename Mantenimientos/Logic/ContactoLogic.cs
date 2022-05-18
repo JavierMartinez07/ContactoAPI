@@ -19,8 +19,8 @@ namespace Mantenimientos.Logic
             catch (Exception e)
             {
                 response.OK = false;
-                response.Message.Add(e.Message);
-                response.Message.Add(e.StackTrace);
+                response.Errors.Add(e.Message);
+                response.Errors.Add(e.StackTrace);
 
             }
             return response;
@@ -36,8 +36,8 @@ namespace Mantenimientos.Logic
             catch (Exception e)
             {
                 response.OK = false;
-                response.Message.Add(e.Message);
-                response.Message.Add(e.StackTrace);
+                response.Errors.Add(e.Message);
+                response.Errors.Add(e.StackTrace);
 
             }
             return response;
@@ -52,8 +52,8 @@ namespace Mantenimientos.Logic
             catch (Exception e)
             {
                 response.OK = false;
-                response.Message.Add(e.Message);
-                response.Message.Add(e.StackTrace);
+                response.Errors.Add(e.Message);
+                response.Errors.Add(e.StackTrace);
 
             }
             return response;

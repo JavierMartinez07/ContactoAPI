@@ -6,17 +6,19 @@ namespace Mantenimiento.Models
 {
     public class ResponseModel<T>
     {
-        public ResponseModel(List<T> records = null, List<dynamic> values = null, bool oK = true, List<string> message = null)
+        public ResponseModel()
         {
-            Records = records;
-            Values = values;
-            OK=oK;
-            Message=message;
+            Records = new List<T>();
+            Values = new List<dynamic>();
+            OK=true;
+            Errors = new List<string>();
+            Message = new List<string>();
         }
 
         public List<T> Records { get; set; }
         public List<dynamic> Values { get; set; }
         public bool OK { get; set; }
         public List<string> Message { get; set; }
+        public List<string> Errors { get; set; }
     }
 }
